@@ -27,17 +27,20 @@ class UserSerializer(serializers.ModelSerializer):
             name = obj.email
         return(name)
 
+    def get_isAdmin(self, obj):
+        return obj.is_staff
+
     def get__id(self, obj):      
         return(obj.id)
 
 
 class UserSerializerWithToken(UserSerializer):
-    name = serializers.SerializerMethodField(read_only=True)
+    token = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = User
         fields = ['id', 'isAdmin', '_id', 'username', 'email', 'name', 'token']
 
-    def get_tokend(self, obj):      
+    def get_token(self, obj):      
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
 
