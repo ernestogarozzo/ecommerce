@@ -6,7 +6,7 @@ import { USER_LOGIN_FAIL,
 
 
 
-export const productListReducer = (state = {  }, action) => {
+export const UserLoginReducer = (state = {  }, action) => {
     switch (action.type) {
         case USER_LOGIN_REQUEST:
             return { loading: true,  }
