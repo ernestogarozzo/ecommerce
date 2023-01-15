@@ -53,25 +53,25 @@ export const listProductDetails = (id) => async (dispatch) => {
     }
 }
 
-export const modelImage = (text) => async (dispatch) => {
+export const modelImage = (text, idRequest) => async (dispatch) => {
     try {
-        dispatch({ type: PRODUCT_DETAILS_REQUEST })
+        dispatch({ type: PRODUCT_DETAILS_REQUEST , id: idRequest})
         const { data } = await axios.get(`/api/model/?text=${text}`)
-        console.log("action")
-        console.log(data)
-        console.log("action fine")
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
-            payload: data
+            payload: data,
+            id: idRequest
         })
+
 
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
+            id: idRequest,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
-                : error.message,
+                : error.message,           
         })
     }
 }

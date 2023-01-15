@@ -50,15 +50,15 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, acti
 export const modelImageReducer = (state = { image: "" }, action) => {
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
-            return { loading: true, ...state }
+            return { loading: true, ...state,  id: action.id }
 
         case PRODUCT_DETAILS_SUCCESS:
             return {
-                loading: false, image: action.payload,
+                loading: false, image: action.payload, id: action.id
             }
 
         case PRODUCT_DETAILS_FAIL:
-            return { loading: false, error: action.payload }
+            return { loading: false, error: action.payload, id: action.id}
 
         default:
             return state
