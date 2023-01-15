@@ -33,7 +33,7 @@ function ProductScreen({ }) {
       <Link to='/' className='btn btn-light my-3'>Indietro</Link>
       <h1>{product.name}</h1>
       <Row>
-        <Col md={6}>
+        <Col md={6} sm={4}>
           <Image src={product.image} />
         </Col>
 
