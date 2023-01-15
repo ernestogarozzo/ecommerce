@@ -7,6 +7,8 @@ from .products import products
 from .models import Product
 from .serializers import ProductSerializer, UserSerializer
 
+from .stablediffusion import aiModel
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -52,3 +54,14 @@ def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
+#ai model
+@api_view(['GET'])
+def getModelResult(request):
+    text =  request.GET.get('text')
+            
+    # predict method used to get the prediction
+    response = aiModel(text)
+    
+    # returning JSON response
+    return Response(response)

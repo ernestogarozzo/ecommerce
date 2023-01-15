@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { productListReducer, productDetailsReducer } from './reducers/productReducers';
+import { productListReducer, productDetailsReducer, modelImageReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 
 
@@ -9,6 +9,7 @@ import { cartReducer } from './reducers/cartReducers';
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
+    imageData: modelImageReducer,
     cart: cartReducer,
 })
 

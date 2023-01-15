@@ -31,47 +31,41 @@ function ProductScreen({ }) {
   return (
     <div>
       <Link to='/' className='btn btn-light my-3'>Indietro</Link>
-      <h1>{product.name}</h1>
-      <Row>
+        <Row>
         <Col md={6}>
-          <Image src={product.image} />
+          <Image src={product.image} fluid/>
         </Col>
 
-        <Col md={3}>
+        <Col md={6}>
           <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h3>{product.name}</h3>
+            <ListGroup.Item className='c-padding-list'>
+            <h1>{product.name}</h1>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item className='c-padding-list'>
               <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item className='c-padding-list'>
               <h5>{product.description}</h5>
             </ListGroup.Item>
 
-          </ListGroup>
-        </Col>
-
-        <Col md={3}>
-          <ListGroup variant='flush'>
-            <ListGroupItem>
+            <ListGroup.Item className='c-padding-list'>
               <Row>
                 <Col>Price:</Col>
                 <Col>${product.price}</Col>
               </Row>
-            </ListGroupItem>
+            </ListGroup.Item>
 
-            <ListGroupItem>
+            <ListGroup.Item  className='c-padding-list'>
               <Row>
                 <Col>Status:</Col>
                 <Col>{product.countInStock > 1 ? 'Disponibile' : 'Esaurito'}</Col>
               </Row>
-            </ListGroupItem>
+            </ListGroup.Item>
 
             {product.countInStock > 0 && (
-              <ListGroup.Item>
+              <ListGroup.Item className='c-padding-list'>
                 <Row>
                   <Col>Qty</Col>
                   <Col xs='auto' className='my-1'>
@@ -95,14 +89,14 @@ function ProductScreen({ }) {
               </ListGroup.Item>
             )}
 
-            <ListGroupItem>
+            <ListGroup.Item  className='c-padding-list'>
               <Row>
                 <Button className='btn-block'
                   onClick={() => addToCartEventHandler(`${params.id}`, qty)}
                   type='button' disabled={
                     product.countInStock === 0}>Aggiungi al carrello</Button>
               </Row>
-            </ListGroupItem>
+            </ListGroup.Item>
 
 
           </ListGroup>

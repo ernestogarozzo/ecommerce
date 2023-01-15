@@ -1,41 +1,40 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col } from 'react-bootstrap'
-import Product from '../components/Product'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
-import { listProducts } from '../actions/productActions'
+import React from 'react'
+import { Container } from 'react-bootstrap'
+
+import Home from '../components/Home'
+import LatestDeals from '../components/LatestDeals'
+import CardCarousel from '../components/CardCarousel'
 
 
-
-function HomeScreen() {
-
-  const dispatch = useDispatch()
-  const productList = useSelector(state => state.productList)
-  const { error, loading, products } = productList
-
-
-  useEffect(() => {
-    dispatch(listProducts())
-
-  }, [])
+function HomeScreen() {  
+  const sections = [
+    {
+      title: "categoriaA",
+      color: "#000000"
+    },
+    {
+      title: "categoriaB",
+      color: "#121212"
+    },
+    {
+      title: "categoriaC",
+      color: "#7F00FF"
+    },
+    {
+      title: "categoriaD",
+      color: "#000000"
+    }
+  ];
 
   return (
     <div>
-      <h1>Ultimi prodotti</h1>
-      {loading ? <Loader />
-        : error ? <Message variant='danger'>{error}</Message>
-          :
-          <div>
-            <Row>
-              {products.map(product => (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </ Col>
-              ))}
-            </Row>
-          </div>
-      }
+
+      <Home></Home>
+
+      {sections.map((section,index) => (  
+        <CardCarousel key={index} section = {section}></CardCarousel>                                       
+      ))}      
+
     </div>
   )
 }
