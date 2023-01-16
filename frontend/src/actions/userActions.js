@@ -1,11 +1,13 @@
 import axios from 'axios'
+import { useEffect } from 'react'
+import { listProducts } from '../actions/productActions'
+import { PRODUCT_LIST_REQUEST } from '../constants/productConstants'
 import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
 
     USER_LOGOUT,
-
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
@@ -67,8 +69,8 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(`http://127.0.0.1:8000/api/users/register`,
-            { 'name': name, 'username': email, 'password': password },
+        const { data } = await axios.post(`http://127.0.0.1:8000/api/users/register/`,
+            { 'name': name, 'email': email, 'password': password },
             config
         )
 
@@ -77,6 +79,12 @@ export const register = (name, email, password) => async (dispatch) => {
             type: USER_REGISTER_SUCCESS,
             payload: data
         })
+
+        useEffect(() => {
+            dispatch(listProducts)
+
+        }, [dispatch])
+
 
         localStorage.setItem('userInfo', JSON.stringify(data))
 
