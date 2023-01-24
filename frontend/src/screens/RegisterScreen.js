@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProducts } from '../actions/productActions'
 import FormContainer from '../components/FormContainer'
-import { register } from '../actions/userActions'
+import { getUserDetails, register } from '../actions/userActions'
 
 
 function RegisterScreen() {
@@ -24,14 +24,25 @@ function RegisterScreen() {
     const location = useLocation()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (userInfo) {
-            navigate(redirect)
-        }
-    }, [navigate, userInfo, redirect])
+    const userDetails = useSelector(state => state.userDetails)
+    const { error, loading, user } = userDetails
 
-    const userRegister = useSelector(state => state.userRegister)
-    const { error, loading, userInfo } = userRegister
+    const userLogin = useSelector(state => state.userDetails)
+    const { userInfo } = userLogin
+
+
+    useEffect(() => {
+        if (!userInfo) {
+            navigate(redirect)
+        } else {
+            if (!user || !user.name) {
+                dispatch(getUserDetails('profile'))
+            } else {
+                setName(user.name)
+                setEmail(user.email)
+            }
+        }
+    }, [navigate, userInfo, user, dispatch])
 
 
     const submitHandler = (e) => {
@@ -39,7 +50,7 @@ function RegisterScreen() {
         if (password != confirmPassword) {
             setMessage('Password do not match')
         } else {
-            dispatch(register(name, email, password))
+            console.log('Updating...')
         }
 
     }
