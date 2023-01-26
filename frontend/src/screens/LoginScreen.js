@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, redirect, useNavigate, useLocation } from 'react-router-dom'
+import { Link, redirect, useNavigate, useLocation, } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector, } from 'react-redux'
 import Loader from '../components/Loader'
@@ -12,10 +12,12 @@ function LoginScreen({ }) {
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const redirect = location.state ? Number(location.state) : '/'
+
 
     //const redirect = location.search ? location.search.split('=')[1] : '/'
-    const location = useLocation()
-    const navigate = useNavigate()
 
     useEffect(() => {
         if (userInfo) {
@@ -30,6 +32,7 @@ function LoginScreen({ }) {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(email, password))
+        navigate(redirect)
     }
 
     return (

@@ -54,6 +54,13 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
                 cartItems: []
             }
 
+
+        case CART_SAVE_SHIPPING_ADDRESS:
+            return {
+                ...state,
+                shippingAddress: action.payload
+            }
+
         default:
             return state
     }

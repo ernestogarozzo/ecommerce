@@ -43,7 +43,7 @@ def getUserProfile(request):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
     user = request.user
@@ -53,7 +53,8 @@ def updateUserProfile(request):
     user.first_name = data['name']
     user.username = data['email']
     user.email = data['email']
-    if data.password != '':
+
+    if data['password'] != '':
             user.password = make_password(data['password'])
 
     user.save()
