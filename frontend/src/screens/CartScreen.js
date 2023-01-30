@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Card, Row, Col, Image, ListGroup, Button, Form, ListGroupItem } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { Message } from '../components/Message';
+import { checkoutHandler } from '../screens/ShippingScreen'
 
 export default function CartScreen() {
     const params = useParams();
@@ -13,10 +14,12 @@ export default function CartScreen() {
     const qty = location.state ? Number(location.state) : 1
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    console.log('cartItem:', cartItems)
+
+
 
     useEffect(() => {
         if (productId) {
@@ -26,6 +29,12 @@ export default function CartScreen() {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
+    }
+
+
+    const checkoutHandler = (e) => {
+        e.preventDefault()
+        navigate('/shipping')
     }
 
     return (
@@ -99,9 +108,8 @@ export default function CartScreen() {
                         <Button
                             type='button'
                             className='btn-block'
-                            disabled={cartItems.length === 0}
-
-                        >
+                            onClick={checkoutHandler}
+                            disabled={cartItems.length === 0}>
                             Completa l'acquisto
                         </Button>
                     </ListGroup.Item>

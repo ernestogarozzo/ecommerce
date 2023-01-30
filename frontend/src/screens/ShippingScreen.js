@@ -3,6 +3,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import FormContainer from '../components/FormContainer'
+import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
 
 function ShippingScreen() {
@@ -13,7 +14,6 @@ function ShippingScreen() {
     const [postalCode, setPostalCode] = useState('')
 
     const location = useNavigate()
-    const redirect = location.state ? Number(location.state) : '/'
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -21,11 +21,14 @@ function ShippingScreen() {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(saveShippingAddress({ address, city, postalCode, country }))
-        navigate(redirect)
+        navigate('/payment')
     }
 
     return (
         <FormContainer>
+
+
+            <CheckoutSteps step1 step2 />
 
             <h1>Shipping</h1>
             <Form onSubmit={submitHandler}>
@@ -41,8 +44,6 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-
-
                 <Form.Group controlId='City'>
                     <Form.Label>City </Form.Label>
                     <Form.Control
@@ -54,7 +55,6 @@ function ShippingScreen() {
                     >
                     </Form.Control>
                 </Form.Group>
-
 
                 <Form.Group controlId='postalCode'>
                     <Form.Label>postalCode </Form.Label>
@@ -68,7 +68,6 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-
                 <Form.Group controlId='Country'>
                     <Form.Label>Country </Form.Label>
                     <Form.Control
@@ -80,8 +79,6 @@ function ShippingScreen() {
                     >
                     </Form.Control>
                 </Form.Group>
-
-
 
                 <Button type='submit' variant='primary'>
                     Prosegui
