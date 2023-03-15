@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
-import { useNavigate, useLocation, Link, useAsyncError } from 'react-router-dom'
-import { useDispatch, useSelector, } from 'react-redux'
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
-
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
+function PlaceOrderScreen({ history }) {
 
-
-function PlaceOrderScreen() {
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, error, success } = orderCreate
 
@@ -25,6 +23,7 @@ function PlaceOrderScreen() {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
+
     if (!cart.paymentMethod) {
         navigate('/payment')
     }
@@ -34,7 +33,7 @@ function PlaceOrderScreen() {
             navigate(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET })
         }
-    }, [success])
+    }, [success, history])
 
     const placeOrder = () => {
         dispatch(createOrder({
@@ -55,7 +54,7 @@ function PlaceOrderScreen() {
                 <Col md={8}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h3>Shipping</h3>
+                            <h2>Shipping</h2>
 
                             <p>
                                 <strong>Shipping: </strong>
@@ -68,7 +67,7 @@ function PlaceOrderScreen() {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <h3>Payment Method</h3>
+                            <h2>Payment Method</h2>
                             <p>
                                 <strong>Method: </strong>
                                 {cart.paymentMethod}
@@ -76,7 +75,7 @@ function PlaceOrderScreen() {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <h3>Order Items</h3>
+                            <h2>Order Items</h2>
                             {cart.cartItems.length === 0 ? <Message variant='info'>
                                 Your cart is empty
                             </Message> : (
@@ -110,7 +109,7 @@ function PlaceOrderScreen() {
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
-                                <h3>Order Summary</h3>
+                                <h2>Order Summary</h2>
                             </ListGroup.Item>
 
                             <ListGroup.Item>

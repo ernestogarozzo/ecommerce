@@ -40,10 +40,10 @@ export default function CartScreen() {
     return (
         <Row>
             <Col md={8}>
-                <h1>Carrello</h1>
+                <h1>Shopping Cart</h1>
                 {cartItems.length === 0 ? (
                     <Message variant='info'>
-                        Non hai prodotti nel carrello <Link to='/'>Indietro</Link>
+                        Your cart is empty <Link to='/'>Go Back</Link>
                     </Message>
                 ) : (
                     <ListGroup variant='flush'>
@@ -83,9 +83,9 @@ export default function CartScreen() {
                                         <Button
                                             type='button'
                                             variant='light'
-
+                                            onClick={() => removeFromCartHandler(item.product)}
                                         >
-                                            <i className='fas fa-trash' onClick={() => removeFromCartHandler(item.product)}></i>
+                                            <i className='fas fa-trash'></i>
                                         </Button>
                                     </Col>
                                 </Row>
@@ -99,7 +99,7 @@ export default function CartScreen() {
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Subtotale ({cartItems.reduce((acc, item) => acc + item.qty, 0)})</h2>
+                            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                         </ListGroup.Item>
                     </ListGroup>
@@ -108,9 +108,10 @@ export default function CartScreen() {
                         <Button
                             type='button'
                             className='btn-block'
+                            disabled={cartItems.length === 0}
                             onClick={checkoutHandler}
-                            disabled={cartItems.length === 0}>
-                            Completa l'acquisto
+                        >
+                            Proceed To Checkout
                         </Button>
                     </ListGroup.Item>
 
