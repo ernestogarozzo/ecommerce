@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Button, Form, ListGroupItem } from 'react-bootstrap'
 
 import Loader from '../components/Loader'
-import { modelImage } from '../actions/productActions'
+import { modelImage } from '../actions/aiModelActions'
 
 
 function AiModelScreen() {  

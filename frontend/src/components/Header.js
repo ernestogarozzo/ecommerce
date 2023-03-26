@@ -21,6 +21,10 @@ function Header() {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
 
+              <LinkContainer to="/trading">
+                  <Nav.Link ><i className='fas fa-shopping-cart'></i>  Trading Bot</Nav.Link>
+                </LinkContainer>
+
                 <LinkContainer to="/model">
                   <Nav.Link ><i className='fas fa-shopping-cart'></i>  AI Model</Nav.Link>
                 </LinkContainer>

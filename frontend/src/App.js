@@ -9,6 +9,7 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import ShopScreen from './screens/ShopScreen';
 import AiModelScreen from './screens/AiModelScreen';
+import TradingBotScreen from './screens/TradingBotScreen';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/cart/" element={<CartScreen />} />
             <Route path="/cart/:id" element={<CartScreen />} />
             <Route path="/model" element={<AiModelScreen />} />
+            <Route path="/trading" element={<TradingBotScreen />} />
           </Routes>
         </Container>
       </main>

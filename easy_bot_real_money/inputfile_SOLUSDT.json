@@ -1,0 +1,1 @@
+{"data_test_id": "sol_easybot_real_20_01_22", "asset": "SOL", "ASSET_PRECISION": 2, "stable": "USDT", "RSI_PERIOD": 14, "MoveAvg_FAST": 15, "MoveAvg_SLOW": 240, "RSI_BUY": 30, "RSI_SELL": 70, "TIME_BUY": 10, "TIME_SELL": 10, "MARGIN_SELL": 1.01, "PERC_TO_SELL": 0.99, "CAP_UNIT": 20, "AVG_BUY_PRICE": 139.051484375, "AVG_SELL_PRICE": 200, "BAL_ASSET_BOUGHT": 1.28}

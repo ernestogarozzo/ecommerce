@@ -83,4 +83,16 @@ class Migration(migrations.Migration):
                 ('product', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='base.product')),
             ],
         ),
+        migrations.CreateModel(
+            name='BotTestData',
+            fields=[
+                ('avgSellPrice', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('avgBuyPrice', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('balanceStable', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('balanceAsset', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('rsiTwo', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('close', models.DecimalField(blank=True, decimal_places=2, max_digits=12, null=True)),
+                ('_id', models.AutoField(editable=False, primary_key=True, serialize=False)),
+            ],
+        ),
     ]

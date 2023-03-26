@@ -1,0 +1,15 @@
+{
+    "data_test_id" : "btc_easy_20_12_v6",
+    "asset" : "BTC",
+    "ASSET_PRECISION" : 6,
+    "stable" : "USDT",
+    "RSI_PERIOD" : 14,
+    "MoveAvg_FAST" :  15,
+    "MoveAvg_SLOW" :  240,
+    "RSI_BUY" : 30,
+    "RSI_SELL" : 70,
+    "TIME_BUY" : 10,
+    "TIME_SELL" : 10,
+    "MARGIN_SELL": 1.01,
+    "PERC_TO_SELL": 0.99
+}

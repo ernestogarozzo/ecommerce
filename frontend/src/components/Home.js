@@ -25,8 +25,8 @@ function Home() {
     <Carousel fade>
       {products.map((product, index) => (          
           
-        <Carousel.Item>
-            <Col key={product._id} className="c-home">
+        <Carousel.Item key={product._id}>
+            <Col className="c-home">
               <p className='c-title mx-0'>Best products</p>
                 <Col sm={12} md={{ span: 3, offset: 7 }} lg={4} xl={3}>
                   <Product  product={product} />                             
