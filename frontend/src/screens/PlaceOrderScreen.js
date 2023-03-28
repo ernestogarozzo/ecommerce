@@ -7,7 +7,7 @@ import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
-function PlaceOrderScreen({ history }) {
+function PlaceOrderScreen({ }) {
 
     const orderCreate = useSelector(state => state.orderCreate)
     const { order, error, success } = orderCreate
@@ -33,7 +33,7 @@ function PlaceOrderScreen({ history }) {
             navigate(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET })
         }
-    }, [success, history])
+    }, [success])
 
     const placeOrder = () => {
         dispatch(createOrder({
