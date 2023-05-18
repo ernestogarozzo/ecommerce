@@ -1,0 +1,3 @@
+- Quando aggiungi un articolo al carrello ti indirizza direttamente al carrello , mentre dovrebbe rimanere sul mercato
+- Backlog Feature: capacità di pianificare gli ordini per data, mostrare una pagina a riguardo
+- Analytics Feature : scheda di analisi (clienti, ordini, magazzino)d
