@@ -30,6 +30,8 @@ function OrderScreen({ }) {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const cart = useSelector(state => state.cart)
+
 
     if (!loading && !error) {
         order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
@@ -39,13 +41,16 @@ function OrderScreen({ }) {
     const addPayPalScript = () => {
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.src = 'https://www.paypal.com/sdk/js?client-id=AeDXja18CkwFUkL-HQPySbzZsiTrN52cG13mf9Yz7KiV2vNnGfTDP0wDEN9sGlhZHrbb_USawcJzVDgn'
+        script.src = 'https://www.paypal.com/sdk/js?client-id=AU6ueGhuYZuGlMzftLsK1WK22rhWvM6CMHAacxCaDHzqoUIrjsnfWrWorZtl37fWfq6jDVJSV0utvJOC'
         script.async = true
         script.onload = () => {
             setSdkReady(true)
         }
         document.body.appendChild(script)
     }
+
+    // AU6ueGhuYZuGlMzftLsK1WK22rhWvM6CMHAacxCaDHzqoUIrjsnfWrWorZtl37fWfq6jDVJSV0utvJOC
+
     useEffect(() => {
 
 
@@ -92,12 +97,14 @@ function OrderScreen({ }) {
                             <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
                             <p>
                                 <strong>Shipping: </strong>
-                                {order.shippingAddress.address},  {order.shippingAddress.city}
+                                {cart.shippingAddress.address},  {cart.shippingAddress.city}
                                 {'  '}
-                                {order.shippingAddress.postalCode},
+                                {cart.shippingAddress.postalCode},
                                 {'  '}
-                                {order.shippingAddress.country}
+                                {cart.shippingAddress.country}
                             </p>
+
+
 
                             {order.isDelivered ? (
                                 <Message variant='success'>Delivered on {order.deliveredAt}</Message>
@@ -217,7 +224,7 @@ function OrderScreen({ }) {
                     </Card>
                 </Col>
             </Row>
-        </div>
+        </div >
     )
 }
 
