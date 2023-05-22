@@ -22,7 +22,7 @@ function Header() {
           <Container>
 
             <LinkContainer to={'/'} >
-              <Navbar.Brand >CSR Boutique</Navbar.Brand>
+              <Navbar.Brand >SUPERCALIFRIGIDA</Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -44,6 +44,24 @@ function Header() {
                   <LinkContainer to="/login">
                     <Nav.Link ><i className='fas fa-user'></i>Accedi</Nav.Link>
                   </LinkContainer>
+                )}
+
+                {userInfo && userInfo.isAdmin && (
+                  <NavDropdown title='Admin' id='adminmenu'>
+
+                    <LinkContainer to='/admin/userlist'>
+                      <NavDropdown.Item>Utenti</NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/admin/productlist'>
+                      <NavDropdown.Item>Prodotti</NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/admin/orderlist'>
+                      <NavDropdown.Item>Ordini</NavDropdown.Item>
+                    </LinkContainer>
+
+                  </NavDropdown>
 
                 )}
               </Nav>
