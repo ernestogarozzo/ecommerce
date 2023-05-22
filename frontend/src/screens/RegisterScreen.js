@@ -50,7 +50,7 @@ function RegisterScreen() {
         if (password != confirmPassword) {
             setMessage('Password do not match')
         } else {
-            console.log('Updating...')
+            dispatch(register(name, email, password))
         }
 
     }

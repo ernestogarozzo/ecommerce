@@ -1,3 +1,6 @@
 - Quando aggiungi un articolo al carrello ti indirizza direttamente al carrello , mentre dovrebbe rimanere sul mercato
 - Backlog Feature: capacità di pianificare gli ordini per data, mostrare una pagina a riguardo
-- Analytics Feature : scheda di analisi (clienti, ordini, magazzino)d
+- Analytics Feature : scheda di analisi (clienti, ordini, magazzino)
+- Riesco a raggiungere /placeorder anche non avendo fatto il login. Da valutare 
+    se va bene così (l'utente dovrebbe poter acquistare anche senza fare login) o meno. In 
+    ogni caso adesso non può piazzare l'ordine. 

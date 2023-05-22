@@ -69,7 +69,7 @@ function ProfileScreen() {
     return (
         <Row>
             <Col md={3}>
-                <h2>User Profile</h2>
+                <h2>Profilo</h2>
                 {message && <Message variant='danger'>{message}</Message>}
                 {error && <Message variant='danger'>{error}</Message>}
                 {loading && <Loader />}
@@ -133,7 +133,7 @@ function ProfileScreen() {
             </Col>
 
             <Col md={9}>
-                <h2>My Orders</h2>
+                <h2>I miei ordini</h2>
                 {loadingOrders ? (
                     <Loader />
                 ) : errorOrders ? (

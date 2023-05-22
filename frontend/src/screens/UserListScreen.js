@@ -18,21 +18,23 @@ function UserListScreen() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const userDelete = useSelector(state => state.userDelete)
+    const { success: successDelete } = userDelete
+
     useEffect(() => {
         if (userInfo && userInfo.isAdmin) {
             dispatch(listUsers())
         } else {
             navigate('/login')
         }
-    }, [dispatch, navigate])
+    }, [dispatch, navigate, successDelete])
 
 
     const deleteHandler = (id) => {
 
-        console.log("DELETE", id)
-        // if (window.confirm('Are you sure you want to delete this user?')) {
-        //     dispatch(deleteUser(id))
-        // }
+        if (window.confirm('Are you sure you want to delete this user?')) {
+            dispatch(deleteUser(id))
+        }
     }
 
 

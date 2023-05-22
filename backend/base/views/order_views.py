@@ -24,7 +24,6 @@ def addOrderItems(request):
     else:
 
         # (1) Create order
-
         order = Order.objects.create(
             user=user,
             paymentMethod=data['paymentMethod'],
@@ -34,7 +33,6 @@ def addOrderItems(request):
         )
 
         # (2) Create shipping address
-
         shipping = ShippingAddress.objects.create(
             order=order,
             address=data['shippingAddress']['address'],
@@ -56,8 +54,7 @@ def addOrderItems(request):
                 image=product.image.url,
             )
 
-            # (4) Update stock
-
+            # (4) Update stock 
             product.countInStock -= item.qty
             product.save()
 
