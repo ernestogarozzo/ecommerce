@@ -155,7 +155,7 @@ export const createProduct = () => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(
-            `/api/products/create/`,
+            `http://127.0.0.1:8000/api/products/create/`,
             {},
             config
         )

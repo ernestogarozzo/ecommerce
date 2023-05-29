@@ -35,19 +35,41 @@ def deleteProduct(request, pk):
     return Response('Prodotto cancellato')
 
 
-@api_view(['PSOT'])
+@api_view(['POST'])
 @permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
-    product = Product.objects.create(
-        user = user, 
-        name = 'Sample',
-        price = 0,
-        brand = 'Sample',
-        countInStock = 0,
-        category = 'Sample',
-        description = 'Sample',
 
+    product = Product.objects.create(
+        user=user,
+        name='Sample Name',
+        price=0,
+        brand='Sample Brand',
+        countInStock=0,
+        category='Sample Category',
+        description=''
     )
+
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def updateProduct(request, pk):
+    data = request.data
+    product = Product.objects.get(_id=pk)
+
+    product.name = data['name']
+    product.price = data['price']
+    product.brand = data['brand']
+    product.countInStock = data['countInStock']
+    product.category = data['category']
+    product.description = data['description']
+    
+    
+    serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
