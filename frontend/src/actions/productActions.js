@@ -135,8 +135,6 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 }
 
 
-
-
 export const createProduct = () => async (dispatch, getState) => {
     try {
         dispatch({
@@ -174,7 +172,6 @@ export const createProduct = () => async (dispatch, getState) => {
         })
     }
 }
-
 
 
 export const updateProduct = (product) => async (dispatch, getState) => {
