@@ -53,10 +53,19 @@ def createProduct(request):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def uploadImage(request):
+    data = request.data
 
+    product_id = data['product_id']
+    product = Product.objects.get(_id=product_id)
 
+    product.image = request.FILES.get('image')
+    product.save()
 
-@api_view(['GET'])
+    return Response('Image was uploaded')
+
+@api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updateProduct(request, pk):
     data = request.data
@@ -68,7 +77,8 @@ def updateProduct(request, pk):
     product.countInStock = data['countInStock']
     product.category = data['category']
     product.description = data['description']
-    
+
+    product.save()    
     
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)

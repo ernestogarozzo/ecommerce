@@ -41,7 +41,7 @@ function ProductListScreen() {
             dispatch(listProducts())
         }
 
-    }, [dispatch, navigate, userInfo, successDelete, successCreate])
+    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct])
 
 
     const deleteHandler = (id) => {
