@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Row, NavDrop, NavDropdown } from 'react-bootstr
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
+import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 
 
@@ -22,15 +23,16 @@ function Header() {
           <Container>
 
             <LinkContainer to={'/'} >
-              <Navbar.Brand >SUPERCALIFRIGIDA</Navbar.Brand>
+              <Navbar.Brand >PAPERELLE</Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+              <SearchBox />
+              <Nav className="mr-auto">
 
                 <LinkContainer to="/cart">
-                  <Nav.Link ><i className='fas fa-shopping-cart'></i>  Carrello</Nav.Link>
+                  <Nav.Link >     <i className='fas fa-shopping-cart'></i>  Carrello</Nav.Link>
                 </LinkContainer>
 
                 {userInfo ? (
