@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector, } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+
 
 function ProductListScreen() {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const params = useParams()
 
     const productList = useSelector(state => state.productList)
     const { loading, error, products } = productList

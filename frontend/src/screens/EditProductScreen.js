@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams, Link, redirect, useNavigate, useLocation } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector, } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -27,7 +27,6 @@ function EditProductScreen() {
 
 
     const dispatch = useDispatch()
-    const location = useLocation()
     const navigate = useNavigate()
 
     const productDetails = useSelector(state => state.productDetails)

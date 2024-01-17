@@ -4,3 +4,10 @@
 - Riesco a raggiungere /placeorder anche non avendo fatto il login. Da valutare 
     se va bene così (l'utente dovrebbe poter acquistare anche senza fare login) o meno. In 
     ogni caso adesso non può piazzare l'ordine. 
+
+- Dopo la registrazione non vengo reindirizzato alla pagina principale
+- caso di airpods con quantità 1 ma status esaurito a frontend
+- controlla funzionamento del carrello ( con un nuovo utente ho trovato un oggetto già in carrello
+averne aggiunto solo uno)
+- riduci la stringa di "pagato" succes dopo aver pagato l'ordine (si vede anche i mill secondi)
+- non si può creare un ordine se non sei loggato ma il processo non è completo (appare errore su frontend)

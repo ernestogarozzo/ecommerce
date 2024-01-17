@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Nav } from 'react-bootstrap'
-import { LinkContainer, Form, Button, Row, Col } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 function CheckoutSteps({ step1, step2, step3, step4 }) {
     return (

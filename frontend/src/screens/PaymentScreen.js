@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Button, Row, Col } from 'react-bootstrap'
-import { useNavigate, useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Form, Button, Col } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -10,8 +10,6 @@ import { savePaymentMethod } from '../actions/cartActions'
 
 function PaymentScreen() {
 
-
-    const location = useNavigate()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
